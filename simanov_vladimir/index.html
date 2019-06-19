@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="form_params.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="card mx-auto mt-5" style="width: 25rem;" >
+			<img src="temp.jpg" class="card-img-top">
+			<div class="card-body">
+			<p class="card-text">Заглушка для тестовой страницы</p>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		//параментры, которые будут задаваться в FormParamsObject
+		var formData = {
+			param1: 'test1',
+			param2: {
+				param21: 'test2',
+				param22: {
+					number: ["123", "456"],
+					text: ["text1", "text2"],
+				}
+			},
+			param3: {
+				param31: {
+					param311: 'test 311'
+				},
+				param32: 1215,
+			}
+		};
+		var params = new FormParamsObject(formData);
+		params.getObjectProperty('param3.param31.param311');
+		params.setObjectProperty('param3.param31.param311','test_test');
+		params.getObjectProperty('param3.param31.param311');
+		params.setObjectProperty('param3.param31.param312','test_2');
+		params.getObjectProperty('param3.param31.param312');
+		params.setObjectProperty('param4.param41.param411','test_create_inside');
+		params.getObjectProperty('param4.param41.param411');
+		params.getObjectProperty('param2.param22');
+		params.setObjectProperty('param4.param41.param412','test_create_param_2');
+		params.getObjectProperty('param4.param41.param412');
+		params.setObjectProperty('param4.param42','test_create_param_2');
+		params.getObjectProperty('param4.param42');
+		params.convertObjectToArray('param2.param22');
+		params.getFullObject();
+	</script>
+</body>
+</html>
